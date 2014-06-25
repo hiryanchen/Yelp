@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *posterImage;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *ratingImage;
+@property (weak, nonatomic) IBOutlet UILabel *numberReviews;
 
 @end

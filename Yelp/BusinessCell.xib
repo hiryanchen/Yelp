@@ -32,14 +32,21 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TFI-5z-vgO">
-                        <rect key="frame" x="95" y="26" width="98" height="21"/>
+                        <rect key="frame" x="97" y="26" width="98" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="numberReviews" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKt-I4-u0C">
+                        <rect key="frame" x="199" y="25" width="118" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="addressLabel" destination="c16-ab-Mjj" id="xZO-x7-Acn"/>
                 <outlet property="name" destination="6IU-m0-hl3" id="bNv-oY-sYd"/>
+                <outlet property="numberReviews" destination="vKt-I4-u0C" id="tlE-os-jy2"/>
                 <outlet property="posterImage" destination="EQA-hc-Wm5" id="Foe-Nk-suI"/>
                 <outlet property="ratingImage" destination="TFI-5z-vgO" id="OQO-iO-c2w"/>
             </connections>

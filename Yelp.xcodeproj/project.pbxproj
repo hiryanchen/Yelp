@@ -25,6 +25,8 @@
 		63E591F41F684901AF8C1C19 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DEC6D18C14F46F8AF2EA320 /* libPods.a */; };
 		D34328C6195A39940029BED7 /* BusinessCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D34328C4195A39940029BED7 /* BusinessCell.m */; };
 		D34328C7195A39940029BED7 /* BusinessCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34328C5195A39940029BED7 /* BusinessCell.xib */; };
+		D3E7F2E7195A5438002768F1 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E7F2E5195A5438002768F1 /* FilterViewController.m */; };
+		D3E7F2E8195A5438002768F1 /* FilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3E7F2E6195A5438002768F1 /* FilterViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,9 @@
 		D34328C3195A39940029BED7 /* BusinessCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCell.h; sourceTree = "<group>"; };
 		D34328C4195A39940029BED7 /* BusinessCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCell.m; sourceTree = "<group>"; };
 		D34328C5195A39940029BED7 /* BusinessCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessCell.xib; sourceTree = "<group>"; };
+		D3E7F2E4195A5438002768F1 /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
+		D3E7F2E5195A5438002768F1 /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
+		D3E7F2E6195A5438002768F1 /* FilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +111,9 @@
 				420474F818DC2B2100E88E07 /* MainViewController.h */,
 				420474F918DC2B2100E88E07 /* MainViewController.m */,
 				420474FA18DC2B2100E88E07 /* MainViewController.xib */,
+				D3E7F2E4195A5438002768F1 /* FilterViewController.h */,
+				D3E7F2E5195A5438002768F1 /* FilterViewController.m */,
+				D3E7F2E6195A5438002768F1 /* FilterViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -264,6 +272,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3E7F2E8195A5438002768F1 /* FilterViewController.xib in Resources */,
 				42FD6C5518DC286B000BF2B9 /* InfoPlist.strings in Resources */,
 				D34328C7195A39940029BED7 /* BusinessCell.xib in Resources */,
 				420474FC18DC2B2100E88E07 /* MainViewController.xib in Resources */,
@@ -323,6 +332,7 @@
 				42FD6C5718DC286B000BF2B9 /* main.m in Sources */,
 				420474F618DC299500E88E07 /* YelpClient.m in Sources */,
 				D34328C6195A39940029BED7 /* BusinessCell.m in Sources */,
+				D3E7F2E7195A5438002768F1 /* FilterViewController.m in Sources */,
 				420474FB18DC2B2100E88E07 /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

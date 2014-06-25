@@ -10,6 +10,7 @@
 #import "YelpClient.h"
 #import "BusinessCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "FilterViewController.h"
 
 NSString * const kYelpConsumerKey = @"vxKwwcR_NMQ7WaEiQBK_CA";
 NSString * const kYelpConsumerSecret = @"33QCvh5bIF5jIHR5klQr7RtBDhQ";
@@ -33,33 +34,60 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     if (self) {
         // You can register for Yelp API keys here: http://www.yelp.com/developers/manage_api_keys
         self.client = [[YelpClient alloc] initWithConsumerKey:kYelpConsumerKey consumerSecret:kYelpConsumerSecret accessToken:kYelpToken accessSecret:kYelpTokenSecret];
-        
-        [self.client searchWithTerm:@"Thai" success:^(AFHTTPRequestOperation *operation, id response) {
-            NSLog(@"response: %@", response);
-            NSDictionary *dict = response;
-            dict = [dict objectForKey:@"businesses"];
-            
-            self.arrBusinesses = [[NSMutableArray alloc] init];
-            for(id business in dict) {
-                NSLog(@"business name: %@ %@", [business objectForKey:@"name"], [business objectForKey:@"image_url"]);
-                [self.arrBusinesses addObject:business];
-            }
-            [self.tableView reloadData];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"error: %@", [error description]);
-        }];
+        [self searchWithTerm:@"Thai"];
     }
     return self;
+}
+
+- (void)searchWithTerm:(NSString *)term {
+    [self.client searchWithTerm:term success:^(AFHTTPRequestOperation *operation, id response) {
+        NSLog(@"response: %@", response);
+        NSDictionary *dict = response;
+        dict = [dict objectForKey:@"businesses"];
+        
+        self.arrBusinesses = [[NSMutableArray alloc] init];
+        for(id business in dict) {
+            NSLog(@"business name: %@ %@", [business objectForKey:@"name"], [business objectForKey:@"image_url"]);
+            [self.arrBusinesses addObject:business];
+        }
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error: %@", [error description]);
+    }];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"BusinessCell" bundle:nil] forCellReuseIdentifier:@"BusinessCell"];
     self.tableView.rowHeight = 80;
+    
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(50.0, 0.0, self.view.frame.size.width - 50.0, 45.0)];
+    searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    UIView *searchBarView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 47.0)];
+    searchBarView.autoresizingMask = 0;
+    searchBar.delegate = self;
+    searchBar.barTintColor = [UIColor redColor];
+    
+    [searchBarView addSubview:searchBar];
+    self.navigationItem.titleView = searchBarView;
+    
+    UIBarButtonItem	*addButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(filterClicked)];
+    [addButton setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIColor whiteColor], NSForegroundColorAttributeName,nil]
+                          forState:UIControlStateNormal];
+
+    self.navigationItem.leftBarButtonItem = addButton;
+    self.navigationItem.leftBarButtonItem.enabled = YES;
+}
+
+- (void)filterClicked {
+    [self.navigationController pushViewController:[[FilterViewController alloc] init] animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,12 +97,12 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 10;
+    return 1;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (self.collapsedSectionIndex == section) {
-        return 1;
+        return 10;
     } else {
         return 10;
     }
@@ -91,6 +119,9 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     cell.name.text = [business objectForKey:@"name"];
     //NSLog(@"%@", [[business objectForKey:@"location"] objectForKey:@"address"][0]);
     cell.addressLabel.text = [[business objectForKey:@"location"] objectForKey:@"address"][0];
+    
+    cell.numberReviews.text = [NSString stringWithFormat:@"%@ Reviews",[business objectForKey:@"review_count"]];
+
     [cell.posterImage setImageWithURL:[NSURL URLWithString:[business objectForKey:@"image_url"]]];
     [cell.ratingImage setImageWithURL:[NSURL URLWithString:[business objectForKey:@"rating_img_url"]]];
 
@@ -104,10 +135,12 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 }
 
 -(CGFloat)tableView:(UITableView *) tableView heightForHeaderInSection:(NSInteger)section {
-    return 50;
+    return 0;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    [self.view endEditing:YES];
 
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
@@ -118,6 +151,11 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     [indexSet addIndex:self.collapsedSectionIndex];
 
     [tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+    [self searchWithTerm:searchBar.text];
 }
 
 @end

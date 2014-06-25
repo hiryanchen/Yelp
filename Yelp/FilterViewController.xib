@@ -4,9 +4,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilterViewController">
             <connections>
-                <outlet property="tableView" destination="Ilq-3r-Eh7" id="im8-B9-rWG"/>
+                <outlet property="tableView" destination="YX2-9P-xZe" id="nQl-yb-gBE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,19 +15,13 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ilq-3r-Eh7">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="YX2-9P-xZe">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstItem="Ilq-3r-Eh7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2XG-bW-lbB"/>
-                <constraint firstItem="Ilq-3r-Eh7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="cKG-eC-Ytg"/>
-                <constraint firstAttribute="trailing" secondItem="Ilq-3r-Eh7" secondAttribute="trailing" id="ftS-Dk-SYS"/>
-                <constraint firstAttribute="bottom" secondItem="Ilq-3r-Eh7" secondAttribute="bottom" id="lSn-lR-WCS"/>
-            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
