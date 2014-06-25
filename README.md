@@ -11,3 +11,5 @@ Search results page:
 Filter page. Unfortunately, not all the filters are supported in the Yelp API.
 * The filters you should actually have are: category, sort (best match, distance, highest rated)
 * The filters table should be organized into sections as in the mock.
+
+![Video Walkthrough](yelpanim.gif)
